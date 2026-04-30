@@ -7,20 +7,28 @@ This repository documents **multiple approaches** to classify solar panels as **
 ## 📦 Project Structure
 
 cleaned-tiny-ml/
-├── cropped_dataset/ # required folder (not uploaded due to size)
-│ ├── train/clean/ dusty/
-│ └── val/clean/ dusty/
-├── best_model.keras # MobileNetV2 transfer learning (12 MB)
-├── best_tiny_cnn_esp32.keras # final tiny CNN (581 KB)
-├── tiny_cnn_esp32_int8.tflite # INT8 quantized model (65 KB)
-├── cnnv3.py # training script for tiny CNN
-├── transfer_learning.py # MobileNetV2 fine‑tuning
-├── converting_model.py # INT8 quantisation script
-├── deploymentcode.ino # ESP32‑CAM Arduino sketch
-├── balance_checker.py # check class distribution
-├── finetune_solar.py # MCUNetV2 fine‑tune attempt
-└── … (other exploration scripts)
-
+│
+├── cropped_dataset/              # required folder (not uploaded due to size)
+│   ├── train/
+│   │   ├── clean/
+│   │   └── dusty/
+│   │
+│   └── val/
+│       ├── clean/
+│       └── dusty/
+│
+├── best_model.keras              # MobileNetV2 transfer learning (12 MB)
+├── best_tiny_cnn_esp32.keras     # final tiny CNN (581 KB)
+├── tiny_cnn_esp32_int8.tflite    # INT8 quantized model (65 KB)
+│
+├── cnnv3.py                      # training script for tiny CNN
+├── transfer_learning.py          # MobileNetV2 fine-tuning
+├── converting_model.py           # INT8 quantisation script
+├── deploymentcode.ino            # ESP32-CAM Arduino sketch
+├── balance_checker.py            # check class distribution
+├── finetune_solar.py             # MCUNetV2 fine-tune attempt
+│
+└── ... (other exploration scripts)
 
 ---
 
