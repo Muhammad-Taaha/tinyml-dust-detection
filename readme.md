@@ -5,7 +5,7 @@ This repository documents **multiple approaches** to classify solar panels as **
 ---
 
 ## 📦 Project Structure
-
+```
 cleaned-tiny-ml/
 │
 ├── cropped_dataset/              # required folder (not uploaded due to size)
@@ -29,7 +29,7 @@ cleaned-tiny-ml/
 ├── finetune_solar.py             # MCUNetV2 fine-tune attempt
 │
 └── ... (other exploration scripts)
-
+```
 ---
 
 ## 📊 Dataset Preparation
