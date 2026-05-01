@@ -1,0 +1,52 @@
+# Large model files (store separately)
+*.keras
+*.pth
+*.h5
+*.tflite
+*.pb
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Arduino / PlatformIO
+.pio/
+build/
+*.ino.elf
+*.ino.with_bootloader.bin
+
+# Expo / React Native (mobile app)
+mobile-app/DustDetector/node_modules/
+mobile-app/DustDetector/.expo/
+mobile-app/DustDetector/android/
+mobile-app/DustDetector/ios/
+mobile-app/DustDetector/.env
+mobile-app/DustDetector/dist/
+mobile-app/DustDetector/.expo-shared/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets
+.env
+*.key
+*.pem
+*.keras
+*.pth
+*.tflite
