@@ -1,0 +1,24 @@
+{
+  "expo": {
+    "name": "Dust Detector",
+    "slug": "dust-detector",
+    "plugins": [
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/notification-icon.png",
+          "color": "#7F77DD",
+          "sounds": []
+        }
+      ]
+    ],
+    "android": {
+      "permissions": ["NOTIFICATIONS", "INTERNET"]
+    },
+    "ios": {
+      "infoPlist": {
+        "NSLocalNetworkUsageDescription": "Used to connect to ESP32 dust sensor"
+      }
+    }
+  }
+}
