@@ -8,27 +8,44 @@ This repository documents **multiple approaches** to classify solar panels as **
 ```
 cleaned-tiny-ml/
 │
-├── cropped_dataset/              # required folder (not uploaded due to size)
-│   ├── train/
-│   │   ├── clean/
-│   │   └── dusty/
-│   │
-│   └── val/
-│       ├── clean/
-│       └── dusty/
+├── data/                              # Dataset (not uploaded to Git due to size)
+│   └── cropped_dataset/
+│       ├── train/
+│       │   ├── clean/                 # Clean panel images for training
+│       │   └── dusty/                 # Dusty panel images for training
+│       └── val/
+│           ├── clean/
+│           └── dusty/
 │
-├── best_model.keras              # MobileNetV2 transfer learning (12 MB)
-├── best_tiny_cnn_esp32.keras     # final tiny CNN (581 KB)
-├── tiny_cnn_esp32_int8.tflite    # INT8 quantized model (65 KB)
+├── models/                            # Trained model files (ignored by Git)
+│   ├── mobilenetv2_transfer.keras     # MobileNetV2 transfer learning (12 MB)
+│   ├── tiny_cnn_esp32.keras           # Final tiny CNN (581 KB)
+│   └── tiny_cnn_esp32_int8.tflite     # INT8 quantized for ESP32 (65 KB)
 │
-├── cnnv3.py                      # training script for tiny CNN
-├── transfer_learning.py          # MobileNetV2 fine-tuning
-├── converting_model.py           # INT8 quantisation script
-├── deploymentcode.ino            # ESP32-CAM Arduino sketch
-├── balance_checker.py            # check class distribution
-├── finetune_solar.py             # MCUNetV2 fine-tune attempt
+├── scripts/                           # Python training & conversion scripts
+│   ├── train_tiny_cnn.py              # Train the ESP32‑optimized CNN
+│   ├── train_mobilenet.py             # Fine‑tune MobileNetV2
+│   ├── quantize_model.py              # Convert to INT8 TFLite
+│   ├── balance_checker.py             # Check dataset class distribution
+│   └── finetune_solar.py              # MCUNetV2 fine‑tune experiment
 │
-└── ... (other exploration scripts)
+├── esp32/                             # ESP32‑CAM firmware
+│   ├── dust_detector.ino              # Main inference + MQTT
+│   └── wifi_deployment.ino            # Wi‑Fi configuration helper
+│
+├── mobile-app/                        # React Native (Expo) mobile app
+│   └── DustDetector/                  # Full Expo project
+│       ├── App.js                     # Main app component
+│       ├── hooks/                     # Custom hooks (WebSocket, notif.)
+│       ├── screens/                   # UI screens (Dashboard, History, Settings)
+│       └── package.json
+│
+├── docs/                              # Documentation & assets
+│   └── readme.md                      (old readme – can be merged)
+│
+├── .gitignore                         # Ignores data/, models/, node_modules, etc.
+├── requirements.txt                   # Python dependencies
+└── README.md                          # Project overview (this file)
 ```
 ---
 
