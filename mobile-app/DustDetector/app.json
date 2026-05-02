@@ -6,18 +6,34 @@
       [
         "expo-notifications",
         {
-          "icon": "./assets/notification-icon.png",
+          "icon": "./assets/icon.png",
           "color": "#7F77DD",
           "sounds": []
+        }
+      ],
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "usesCleartextTraffic": true
+          }
         }
       ]
     ],
     "android": {
-      "permissions": ["NOTIFICATIONS", "INTERNET"]
+      "permissions": [
+        "NOTIFICATIONS",
+        "INTERNET",
+        "ACCESS_NETWORK_STATE"
+      ]
     },
     "ios": {
       "infoPlist": {
-        "NSLocalNetworkUsageDescription": "Used to connect to ESP32 dust sensor"
+        "NSLocalNetworkUsageDescription": "Used to connect to ESP32 dust sensor",
+        "NSAppTransportSecurity": {
+          "NSAllowsArbitraryLoads": true,
+          "NSAllowsLocalNetworking": true
+        }
       }
     }
   }

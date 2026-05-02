@@ -1,14 +1,21 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, TextInput, StyleSheet, TouchableOpacity, Switch } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
-export default function SettingsScreen({ ip, onIpChange }) {
-  const [inputIp, setInputIp]         = useState(ip);
+export default function SettingsScreen({ ip, onIpChange, defaultPort = 81 }) {
+  const [inputIp, setInputIp] = useState(ip ?? '');
   const [notifEnabled, setNotifEnabled] = useState(true);
+  useEffect(() => {
+    setInputIp(ip ?? '');
+  }, [ip]);
 
   const save = async () => {
-    await AsyncStorage.setItem('esp32_ip', inputIp);
-    onIpChange(inputIp);
+    const endpoint = (inputIp ?? '').trim();
+    try {
+      await AsyncStorage.setItem('esp32_ip', endpoint);
+      onIpChange(endpoint);
+    } catch (error) {
+      console.error('Failed to save ESP endpoint:', error);
+    }
   };
 
   return (
@@ -16,15 +23,18 @@ export default function SettingsScreen({ ip, onIpChange }) {
       <Text style={styles.section}>ESP32 Connection</Text>
       <Text style={styles.hint}>
         Find the IP in Serial Monitor after flashing.{'\n'}
-        Example: 192.168.1.42
+        Default WebSocket port is {defaultPort}.{'\n'}
+        Accepted: 192.168.1.42, 192.168.1.42:{defaultPort}, ws://192.168.1.42:{defaultPort}
       </Text>
       <TextInput
         style={styles.input}
         value={inputIp}
         onChangeText={setInputIp}
-        placeholder="192.168.1.xx"
-        keyboardType="numeric"
+        placeholder={`192.168.1.42:${defaultPort}`}
+        keyboardType="numbers-and-punctuation"
+        autoCapitalize="none"
         autoCorrect={false}
+        onSubmitEditing={save}
       />
       <TouchableOpacity style={styles.saveBtn} onPress={save}>
         <Text style={styles.saveTxt}>Save & Connect</Text>
