@@ -5,6 +5,8 @@
 *.tflite
 *.pb
 
+data/
+
 # Python
 __pycache__/
 *.pyc
